@@ -1,1 +1,5 @@
-.vagrant
+.vagrant/
+wordpress/*
+!wordpress/wp-content/*
+!wordpress/index.php
+!wordpress/wp-config.php
