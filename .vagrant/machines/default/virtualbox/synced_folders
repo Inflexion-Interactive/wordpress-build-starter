@@ -1,1 +1,0 @@
-{"virtualbox":{"/etc/apache2/sites-available":{"guestpath":"/etc/apache2/sites-available","hostpath":"/Users/pruett/Code/repertorio/conf","disabled":false},"/var/www/wordpress":{"guestpath":"/var/www/wordpress","hostpath":"/Users/pruett/Code/repertorio/wordpress","disabled":false},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/pruett/Code/repertorio","disabled":false}}}
