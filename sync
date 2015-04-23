@@ -1,0 +1,5 @@
+printf "\r  [ \033[0;33m?\033[0m ] - Where are you pulling from (IP address or domain) "
+read -e host
+printf "\r  [ \033[0;33m?\033[0m ] - What is the destination path "
+read -e destination
+rsync -avz root@$host:/var/www/ $destination/
