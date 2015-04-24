@@ -75,7 +75,7 @@ define('AUTH_SALT',        '-$4P*{f>BFu1B3AZoTKfl/,^:yqRf)WGnk#-bo2+)66*tpa{$3Nn
 define('SECURE_AUTH_SALT', ':P>`ywPZq5-wKfQUJ]ep#pw@PK)+LdKGd/E|WhGv/ZDCc_:H/mDzB@%!: %;EY>x');
 define('LOGGED_IN_SALT',   'x|}zR E(+?|lEm0nK|B^,EmS!tZuU</*2A{Mm:R86*^&tuBZlSdHjnugX|0yCWEb');
 define('NONCE_SALT',       '9V7n_O}TC[C]BHv|M7W0U8^75xsVvo*Kg5i?W|;ErMKmV*2cve/kFE*FwLfWNh:r');
-define('DB_NAME', 'wordpress');
+define('DB_NAME', 'wordpress_development');
 define('DB_USER', 'root');
 define('DB_PASSWORD', 'root');
 require_once(ABSPATH . 'wp-settings.php');
