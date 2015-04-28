@@ -1,4 +1,16 @@
 <?php
+
+/** Define multiple environments. */
+if ($_SERVER['SERVER_ADDR'] == '104.236.219.10') {
+  if ($_SERVER['SERVER_PORT'] == '4567' {
+    define('WP_ENV', 'staging');
+  } else {
+    define('WP_ENV', 'production');
+  }
+} else {
+  define('WP_ENV', 'local');
+}
+
 /**
  * The base configurations of the WordPress.
  *
@@ -63,7 +75,7 @@ define('WP_DEBUG', false);
 
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
-	define('ABSPATH', dirname(__FILE__) . '/');
+  define('ABSPATH', dirname(__FILE__) . '/');
 
 /** Sets up WordPress vars and included files. */
 define('FS_METHOD', 'direct');
@@ -75,8 +87,16 @@ define('AUTH_SALT',        '-$4P*{f>BFu1B3AZoTKfl/,^:yqRf)WGnk#-bo2+)66*tpa{$3Nn
 define('SECURE_AUTH_SALT', ':P>`ywPZq5-wKfQUJ]ep#pw@PK)+LdKGd/E|WhGv/ZDCc_:H/mDzB@%!: %;EY>x');
 define('LOGGED_IN_SALT',   'x|}zR E(+?|lEm0nK|B^,EmS!tZuU</*2A{Mm:R86*^&tuBZlSdHjnugX|0yCWEb');
 define('NONCE_SALT',       '9V7n_O}TC[C]BHv|M7W0U8^75xsVvo*Kg5i?W|;ErMKmV*2cve/kFE*FwLfWNh:r');
-define('DB_NAME', 'wordpress_production');
-define('DB_USER', 'wordpress');
-define('DB_PASSWORD', '6nQpveKWQs');
+
+define('DB_NAME', 'wordpress_' . WP_ENV);
+
+/** Declare environment specific setttings. */
+if (WP_ENV == 'local') {
+  define('DB_USER', 'root');
+  define('DB_PASSWORD', 'root');
+} else {
+  define('DB_USER', 'wordpress');
+  define('DB_PASSWORD', '6nQpveKWQs');
+}
 
 require_once(ABSPATH . 'wp-settings.php');

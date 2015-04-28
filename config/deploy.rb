@@ -11,11 +11,11 @@ set :repository, 'https://github.com/Inflexion-Interactive/wordpress-build-start
 
 # Read/set environment variable
 # Default `staging`
-# `mina <task> on=production`
+# e.g. `mina <task> on=production`
 set :env, "#{ENV['on'] == 'production' ? 'production' : 'staging' }"
 
 task :environment do
-  set :deploy_to, "#{env == 'production' ? '/var/www/production' : '/var/www/staging'}"
+  set :deploy_to, "/var/www/#{env}"
   set :branch, "#{env == 'production' ? 'master' : 'staging'}"
 end
 
@@ -32,7 +32,6 @@ task :deploy => :environment do
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
-    invoke :'wp:config'
     invoke :'git:clone'
     invoke :'deploy:cleanup'
 
@@ -41,19 +40,3 @@ task :deploy => :environment do
     end
   end
 end
-
-desc "Set correct wp-config.php file"
-task :'wp:config' => :environment do
-  queue! %[rm wp-config.php]
-  queue! %[cp "config/wpconfigs/wp-config.#{env}.php ."]
-  queue! %[git add --all; git commit -am "deploy commit via mina; git push origin #{branch}"]
-end
-
-
-# For help in making your deploy script, see the Mina documentation:
-#
-#  - http://nadarei.co/mina
-#  - http://nadarei.co/mina/tasks
-#  - http://nadarei.co/mina/settings
-#  - http://nadarei.co/mina/helpers
-
