@@ -97,7 +97,7 @@ def create_host_file(env)
           Options FollowSymLinks
           AllowOverride None
         </Directory>
-        <Directory #{deploy_to!}/#{current_path!}
+        <Directory #{deploy_to!}/#{current_path!}>
           Options Indexes FollowSymLinks MultiViews
           AllowOverride None
           Order allow,deny
@@ -114,7 +114,7 @@ def create_host_file(env)
           Options FollowSymLinks
           AllowOverride None
         </Directory>
-        <Directory #{deploy_to!}/#{current_path!}
+        <Directory #{deploy_to!}/#{current_path!}>
           Options Indexes FollowSymLinks MultiViews
           AllowOverride None
           Order allow,deny
