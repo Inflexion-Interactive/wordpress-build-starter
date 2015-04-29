@@ -2,7 +2,7 @@
 
 /** Define multiple environments. */
 if ($_SERVER['SERVER_ADDR'] == '104.236.219.10') {
-  if ($_SERVER['SERVER_PORT'] == '4567' {
+  if ($_SERVER['SERVER_PORT'] == '4567') {
     define('WP_ENV', 'staging');
   } else {
     define('WP_ENV', 'production');
