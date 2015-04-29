@@ -14,29 +14,16 @@ Below are the main components of the project:
 
 - Local environment setup with [Vagrant](https://www.vagrantup.com/)
 - Deployment and Apache provisioning to both Staging and Production environments with [Mina](http://mina-deploy.github.io/mina/)
-- Incredibly easy WordPress core updates (coming soon)
+- Incredibly easy WordPress core updates (*coming soon*)
 
 ## Getting Started
 
-To begin, we'll create our **production** server. Since the goal is to mirror our production environment, we'll use this to then setup our other environments. So let's get to it!
+To begin, we'll need to create our **production** server first. Since the goal is to mirror our production environment, we'll use this to then setup our other environments. So let's get to it!
 
 <img src="https://cloud.githubusercontent.com/assets/794809/7400105/6e9269ec-ee88-11e4-8c2a-6b109d68d316.png" width="437" height="69" />
 
-![digitalocean-logo](https://cloud.githubusercontent.com/assets/794809/7400105/6e9269ec-ee88-11e4-8c2a-6b109d68d316.png)
+1. Your choice of a production server is obviously up to you, but we highly recommend using [Digital Ocean](https://www.digitalocean.com/). It provides a dead-simple and affordable VPS setup with out-of-the-box WordPress support. Follow the instructions on the website and create a droplet. Our default image includes an Ubuntu distro along with the latest version of Wordpress (under **Applications** tab within the *Select Image* section.
 
+![digitalocean-droplet](https://cloud.githubusercontent.com/assets/794809/7400011/d6ad02d6-ee87-11e4-8360-e959279123d1.png)
 
-Your choice of a production server is up to you, but we highly recommend using [Digital Ocean](https://www.digitalocean.com/). It provides a dead-simple VPS setup with out-of-the-box WordPress support. Follow the instructions on the website and create a droplet. Our default image includes an Ubuntu distro along with the latest version of Wordpress (found under **Applications** tab within the *Select Image* section.
-
-![digitalocea-droplet](https://cloud.githubusercontent.com/assets/794809/7400011/d6ad02d6-ee87-11e4-8360-e959279123d1.png)
-
-
-
-
-
-
-
-
-
-
-
-
+2. Now that your production VPS is bootstrapped, pull down the vital contents
