@@ -3,13 +3,12 @@
 </p>
 
 # WordPress Blastoff
-#### Modern Wordpress Development
 
-### About WP Blastoff?
+#### About WP Blastoff
 
 This repository serves as a jumping off point in WordPress development. A modern development workflow should be fully version controlled and provide multiple environments. It should also provide a straightforward deployment solution as well as be easily maintainable as the project matures. This is what we hope to achieve with **WordPress Blastoff**. A repo that will help bootstrap your WordPress projects, but provide the flexibility and customization to accomodate your specific needs.
 
-### What is involved?
+#### What is involved
 
 Below are the main components of the project:
 
@@ -21,7 +20,7 @@ Below are the main components of the project:
 
 To begin, we'll create our **production** server. Since the goal is to mirror our production environment, we'll use this to then setup our other environments. So let's get to it!
 
-### Creating a Digital Ocean Production Droplet
+<img src="https://cloud.githubusercontent.com/assets/794809/7400105/6e9269ec-ee88-11e4-8c2a-6b109d68d316.png" width="437" height="69" />
 
 ![digitalocean-logo](https://cloud.githubusercontent.com/assets/794809/7400105/6e9269ec-ee88-11e4-8c2a-6b109d68d316.png)
 
