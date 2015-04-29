@@ -92,17 +92,16 @@ def create_host_file(env)
       Listen *:4567
       <VirtualHost *:4567>
         ServerName 104.236.219.10
-        DocumentRoot /var/www/staging
+        DocumentRoot #{deploy_to!}/#{current_path!}
         <Directory />
           Options FollowSymLinks
           AllowOverride None
         </Directory>
-        <Directory /var/www/staging>
+        <Directory #{deploy_to!}/#{current_path!}
           Options Indexes FollowSymLinks MultiViews
           AllowOverride None
           Order allow,deny
-          deny from all
-          allow from 104.236.219.10
+          Allow from all
         </Directory>
       </VirtualHost>
     HOSTFILE
@@ -110,16 +109,16 @@ def create_host_file(env)
     return <<-HOSTFILE
       <VirtualHost *:80>
         ServerName 104.236.219.10
-        DocumentRoot /var/www/production
+        DocumentRoot #{deploy_to!}/#{current_path!}
         <Directory />
           Options FollowSymLinks
           AllowOverride None
         </Directory>
-        <Directory /var/www/production>
+        <Directory #{deploy_to!}/#{current_path!}
           Options Indexes FollowSymLinks MultiViews
           AllowOverride None
           Order allow,deny
-          allow from all
+          Allow from all
         </Directory>
       </VirtualHost>
     HOSTFILE
