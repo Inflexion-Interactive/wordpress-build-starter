@@ -23,7 +23,8 @@ To begin, we'll create our **production** server. Since the goal is to mirror ou
 
 ### Creating a Digital Ocean Production Droplet
 
-![digitalocean-logo](https://cloud.githubusercontent.com/assets/794809/7399340/186ea710-ee83-11e4-8700-6ff167c3ffb1.png)
+![digitalocean-logo](https://cloud.githubusercontent.com/assets/794809/7400105/6e9269ec-ee88-11e4-8c2a-6b109d68d316.png)
+
 
 Your choice of a production server is up to you, but we highly recommend using [Digital Ocean](https://www.digitalocean.com/). It provides a dead-simple VPS setup with out-of-the-box WordPress support. Follow the instructions on the website and create a droplet. Our default image includes an Ubuntu distro along with the latest version of Wordpress (found under **Applications** tab within the *Select Image* section.
 
