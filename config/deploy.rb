@@ -4,7 +4,7 @@ require 'mina/git'
 
 set :user, 'root'
 set :domain, '104.236.219.10'
-set :repository, 'https://github.com/Inflexion-Interactive/wordpress-build-starter.git'
+set :repository, 'https://github.com/Inflexion-Interactive/wp-blastoff.git'
 
 # Read/set environment
 # Default `staging`
@@ -14,6 +14,7 @@ set :env, "#{ENV['on'] == 'production' ? 'production' : 'staging' }"
 task :environment do
   set :deploy_to, "/var/www/#{env}"
   set :branch, "#{env == 'production' ? 'master' : 'staging'}"
+  set :staging_port, "4567"
 end
 
 task :setup => :environment do
@@ -37,10 +38,11 @@ task :'db:setup' => :environment do
   db_pass = STDIN.gets.chomp
   queue! %{
     echo "-----> Provisioning #{env} database..."
+    Q0="DROP DATABASE IF EXISTS wordpress;"
     Q1="CREATE DATABASE IF NOT EXISTS wordpress_#{env};"
     Q2="GRANT ALL PRIVILEGES ON wordpress_#{env}.* TO #{db_user}@localhost IDENTIFIED BY '#{db_pass}';"
     Q3="FLUSH PRIVILEGES;"
-    SQL="${Q1}${Q2}${Q3}"
+    SQL="${Q0}${Q1}${Q2}${Q3}"
     #{echo_cmd %[mysql -uroot -e "$SQL"]}
     echo "-----> Done"
   }
@@ -86,41 +88,32 @@ end
 
 # Helper Functions
 def create_host_file(env)
+  base_hostfile = <<-HOSTFILE
+      ServerName 104.236.219.10
+      DocumentRoot #{deploy_to!}/#{current_path!}/wordpress
+      <Directory />
+        Options FollowSymLinks
+        AllowOverride None
+      </Directory>
+      <Directory #{deploy_to!}/#{current_path!}/wordpress>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride None
+        Order allow,deny
+        Allow from all
+      </Directory>
+    </VirtualHost>
+  HOSTFILE
   case env
   when 'staging'
-    return <<-HOSTFILE
-      Listen *:4567
-      <VirtualHost *:4567>
-        ServerName 104.236.219.10
-        DocumentRoot #{deploy_to!}/#{current_path!}
-        <Directory />
-          Options FollowSymLinks
-          AllowOverride None
-        </Directory>
-        <Directory #{deploy_to!}/#{current_path!}>
-          Options Indexes FollowSymLinks MultiViews
-          AllowOverride None
-          Order allow,deny
-          Allow from all
-        </Directory>
-      </VirtualHost>
-    HOSTFILE
+    base_hostfile.prepend(<<-HOSTFILE
+                        Listen *:#{staging_port}
+                        <VirtualHost *:#{staging_port}>
+                      HOSTFILE
+                     )
   when 'production'
-    return <<-HOSTFILE
-      <VirtualHost *:80>
-        ServerName 104.236.219.10
-        DocumentRoot #{deploy_to!}/#{current_path!}
-        <Directory />
-          Options FollowSymLinks
-          AllowOverride None
-        </Directory>
-        <Directory #{deploy_to!}/#{current_path!}>
-          Options Indexes FollowSymLinks MultiViews
-          AllowOverride None
-          Order allow,deny
-          Allow from all
-        </Directory>
-      </VirtualHost>
-    HOSTFILE
+    base_hostfile.prepend(<<-HOSTFILE
+                        <VirtualHost *:80>
+                      HOSTFILE
+                     )
   end
 end

@@ -5,3 +5,5 @@ read -e origin
 printf "\r  [ \033[0;33m?\033[0m ] - What is the destination path (e.g. wordpress) "
 read -e destination
 rsync -avz root@$host:$origin/ $destination/
+echo "\r sync complete! "
+
