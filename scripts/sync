@@ -1,6 +1,6 @@
 printf "\r  [ \033[0;33m?\033[0m ] - Where are you pulling from (IP address or domain) "
 read -e host
-printf "\r  [ \033[0;33m?\033[0m ] - What is the folder origin (e.g. /var/www/production) "
+printf "\r  [ \033[0;33m?\033[0m ] - What is the folder origin (e.g. /var/www) "
 read -e origin
 printf "\r  [ \033[0;33m?\033[0m ] - What is the destination path (e.g. wordpress) "
 read -e destination
