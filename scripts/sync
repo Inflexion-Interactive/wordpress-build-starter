@@ -2,8 +2,9 @@ printf "\r  [ \033[0;33m?\033[0m ] - Where are you pulling from (IP address or d
 read -e host
 printf "\r  [ \033[0;33m?\033[0m ] - What is the folder origin (e.g. /var/www) "
 read -e origin
-printf "\r  [ \033[0;33m?\033[0m ] - What is the destination path (e.g. wordpress) "
+printf "\r  [ \033[0;33m?\033[0m ] - What is the destination path on your machine (e.g. wordpress) "
 read -e destination
+printf "\r  [ \033[0;33m?\033[0m ] - Where do you want to backup the files on the server (e.g. /var/backups) "
+read -e backup
 rsync -avz root@$host:$origin/ $destination/
-echo "\r sync complete! "
-
+ssh root@$host "rsync -avz --remove-source-files $origin/ $backup/_wp-backup_ && cd $origin && rm -rf *"
