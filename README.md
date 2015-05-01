@@ -31,6 +31,6 @@ To begin, we'll need to create our **production** server first. Since the goal i
 
 <img src="https://cloud.githubusercontent.com/assets/794809/7400105/6e9269ec-ee88-11e4-8c2a-6b109d68d316.png" width="437" height="69" />
 
-1. Your choice of a production server is obviously up to you, but we highly recommend using [Digital Ocean](https://www.digitalocean.com/). It provides a dead-simple and affordable VPS setup with out-of-the-box WordPress support. Follow the instructions on the website and create a droplet. Our default image includes an Ubuntu distro along with the latest version of Wordpress (under **Applications** tab within the *Select Image* section.[digitalocean-droplet](https://cloud.githubusercontent.com/assets/794809/7400011/d6ad02d6-ee87-11e4-8360-e959279123d1.png)
+1. Your choice of a production server is obviously up to you, but we highly recommend using [Digital Ocean](https://www.digitalocean.com/). It provides a dead-simple and affordable VPS setup with out-of-the-box WordPress support. Follow the instructions on the website and create a droplet. Our default image includes an Ubuntu distro along with the latest version of Wordpress (under **Applications** tab within the *Select Image* section.![digitalocean-droplet](https://cloud.githubusercontent.com/assets/794809/7400011/d6ad02d6-ee87-11e4-8360-e959279123d1.png)
 
 2. Now that your production VPS is bootstrapped, grab the `wp-config.php` file that was created by Digital Ocean on the server. Invoke the `getwpconfig` script and plug in 
